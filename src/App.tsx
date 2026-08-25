@@ -1,6 +1,5 @@
 import { ShaderBackground } from "./components/ui/gem-smoke";
 import Navbar from "./components/ui/Navbar";
-import NestedCircularText from "./components/ui/NestedCircularText";
 import DriftWall, { type DriftWallItem } from "./components/ui/DriftWall";
 import SmoothScroll from "./components/ui/smooth-scroll";
 import logoWhite from "./assets/logo-white.png";
@@ -46,7 +45,7 @@ function App() {
             aria-labelledby="hero-title"
           >
             <p className="mb-6 font-mono text-[11px] uppercase tracking-[0.16em] text-white">
-              CAKRAPONIK / 2026
+              CAKRAPHONIK / 2026
             </p>
             <h1
               id="hero-title"
@@ -106,18 +105,42 @@ function App() {
               />
             </div>
           </div>
-        </section>
-        <section
-          className="flex w-full flex-col items-center justify-center px-4 py-20"
-          aria-labelledby="wheel-title"
-        >
-          <h2
-            id="wheel-title"
-            className="mb-16 text-center text-3xl font-bold text-white md:text-5xl"
-          >
-            Cakraphonic Wheel
-          </h2>
-          <NestedCircularText />
+          <div className="mx-auto max-w-[1200px] flex-col items-center gap-12 md:flex-row md:justify-between md:gap-20 mt-10">
+            <div className="max-w-2xl font-sans text-sm leading-relaxed text-white/75 md:flex-1">
+              <h2 className="mb-5 text-4xl font-bold tracking-tight text-white md:text-5xl">
+                Vision
+              </h2>
+              <h3 className="text-3xl text-red-500 mb-3">
+                UKM musik yang membangun dan support mahasiswa bertalenta musik
+              </h3>
+              <p>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                Aliquam, temporibus maiores ratione dicta culpa excepturi
+                corrupti, id voluptates soluta, praesentium at ea iste quod?
+                Magnam corporis odit expedita vitae maiores!
+              </p>
+            </div>
+          </div>
+          <div className="mx-auto  max-w-[1200px] flex-col items-center gap-12 md:flex-row md:justify-between md:gap-20 mt-10">
+            <div className="max-w-2xl font-sans text-sm leading-relaxed text-white/75 md:flex-1">
+              <h2 className="mb-5 text-4xl font-bold tracking-tight text-white md:text-5xl">
+                Mision
+              </h2>
+              <p>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                Aliquam, temporibus maiores ratione dicta culpa excepturi
+                corrupti, id voluptates soluta, praesentium at ea iste quod?
+                Magnam corporis odit expedita vitae maiores!
+              </p>
+            </div>
+          </div>
+          <div className="mx-auto flex max-w-[1200px] flex-col items-center gap-12 md:flex-row md:justify-between md:gap-20 mt-10">
+            <div className="max-w-2xl font-sans text-sm leading-relaxed text-white/75 md:flex-1">
+              <h2 className="mb-5 text-4xl font-bold tracking-tight text-white md:text-5xl">
+                partnership
+              </h2>
+            </div>
+          </div>
         </section>
         <section
           id="members"
