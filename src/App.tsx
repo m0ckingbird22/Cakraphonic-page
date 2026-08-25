@@ -22,6 +22,12 @@ const documentationItems: DriftWallItem[] = [
   { image: "https://picsum.photos/id/559/600/400", title: "Archive" },
 ];
 
+const partnerships = [
+  { name: "Cakrawala University", type: "Campus" },
+  { name: "Student Assosiation Goverment", type: "Organization" },
+  { name: "Cakrawala Festival", type: "Event" },
+];
+
 function App() {
   return (
     <SmoothScroll>
@@ -30,6 +36,7 @@ function App() {
           navItems={[
             { label: "Home", href: "#home" },
             { label: "About", href: "#about" },
+            { label: "partnership", href: "partnership" },
             { label: "Member", href: "#members" },
             { label: "Documentation", href: "#documentation" },
           ]}
@@ -134,13 +141,6 @@ function App() {
               </p>
             </div>
           </div>
-          <div className="mx-auto flex max-w-[1200px] flex-col items-center gap-12 md:flex-row md:justify-between md:gap-20 mt-10">
-            <div className="max-w-2xl font-sans text-sm leading-relaxed text-white/75 md:flex-1">
-              <h2 className="mb-5 text-4xl font-bold tracking-tight text-white md:text-5xl">
-                partnership
-              </h2>
-            </div>
-          </div>
         </section>
         <section
           id="members"
@@ -162,6 +162,33 @@ function App() {
                     <p className="text-lg leading-none">Name</p>
                     <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.14em] text-white/65">
                       {member}
+                    </p>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+        <section
+          id="partnership"
+          className="min-h-[100svh] w-full bg-black px-[clamp(24px,7vw,104px)] py-24 text-white md:py-32"
+          aria-labelledby="partnership-title"
+        >
+          <div className="mx-auto max-w-[1200px]">
+            <h2
+              className="mb-5 text-3xl font-normal tracking-tight md:text-4xl"
+              id="partnership-title"
+            >
+              Partnership
+            </h2>
+            <div className="grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-4">
+              {partnerships.map((item) => (
+                <article key={item.name} className="bg-white/15">
+                  <div className="aspect-[4/3] bg-white/10" />
+                  <div className="border-t border-black bg-white/20 px-3 py-2">
+                    <p className="text-lg leading-none">{item.name}</p>
+                    <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.14em] text-white/65">
+                      {item.type}
                     </p>
                   </div>
                 </article>
