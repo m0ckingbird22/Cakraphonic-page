@@ -3,6 +3,8 @@ import Navbar from "./components/ui/Navbar";
 import DriftWall, { type DriftWallItem } from "./components/ui/DriftWall";
 import SmoothScroll from "./components/ui/smooth-scroll";
 import logoWhite from "./assets/logo-white.png";
+import daps from "./assets/dapss.jpg";
+import SGA from "./assets/SGA.png";
 
 const documentationItems: DriftWallItem[] = [
   { image: "https://picsum.photos/id/145/600/400", title: "Live session" },
@@ -24,8 +26,19 @@ const documentationItems: DriftWallItem[] = [
 
 const partnerships = [
   { name: "Cakrawala University", type: "Campus" },
-  { name: "Student Assosiation Goverment", type: "Organization" },
+  { name: "Student Assosiation Goverment", type: "Organization", image: SGA },
   { name: "Cakrawala Festival", type: "Event" },
+];
+
+const members = [
+  { name: "Vanya", type: "Manager" },
+  { name: "Dovi", type: "Head Cakraphonic" },
+  { name: "Altap", type: "Backstage Manager" },
+  { name: "Andrew", type: "Guitarist" },
+  { name: "Farhan", type: "guitarist" },
+  { name: "Kelvin", type: "Bassist" },
+  { name: "Jauza", type: "Singer" },
+  { name: "Dhafi", type: "Drummer", image: daps },
 ];
 
 function App() {
@@ -36,8 +49,8 @@ function App() {
           navItems={[
             { label: "Home", href: "#home" },
             { label: "About", href: "#about" },
-            { label: "partnership", href: "partnership" },
             { label: "Member", href: "#members" },
+            { label: "partnership", href: "partnership" },
             { label: "Documentation", href: "#documentation" },
           ]}
         />
@@ -81,7 +94,7 @@ function App() {
             <div className="max-w-2xl font-sans text-sm leading-relaxed text-white/75 md:flex-1">
               <h2
                 id="about-title"
-                className="mb-5 text-4xl font-bold tracking-tight text-white md:text-5xl"
+                className="mb-5 text-5xl font-bold tracking-tight text-white md:text-4xl"
               >
                 kenal lebih dekat dengan
                 <br />
@@ -112,7 +125,7 @@ function App() {
               />
             </div>
           </div>
-          <div className="mx-auto max-w-[1200px] flex-col items-center gap-12 md:flex-row md:justify-between md:gap-20 mt-10">
+          <div className="mx-auto max-w-[1200px] flex-col items-center gap-12 md:flex-row md:justify-between md:gap-20 mt-20">
             <div className="max-w-2xl font-sans text-sm leading-relaxed text-white/75 md:flex-1">
               <h2 className="mb-5 text-4xl font-bold tracking-tight text-white md:text-5xl">
                 Vision
@@ -128,7 +141,7 @@ function App() {
               </p>
             </div>
           </div>
-          <div className="mx-auto  max-w-[1200px] flex-col items-center gap-12 md:flex-row md:justify-between md:gap-20 mt-10">
+          <div className="mx-auto  max-w-[1200px] flex-col items-center gap-12 md:flex-row md:justify-between md:gap-20 mt-20">
             <div className="max-w-2xl font-sans text-sm leading-relaxed text-white/75 md:flex-1">
               <h2 className="mb-5 text-4xl font-bold tracking-tight text-white md:text-5xl">
                 Mision
@@ -150,18 +163,28 @@ function App() {
           <div className="mx-auto max-w-[1200px]">
             <h2
               id="members-title"
-              className="mb-5 text-3xl font-normal tracking-tight md:text-4xl"
+              className="mb-5 text-3xl font-bold tracking-tight md:text-5xl"
             >
-              Cakraphonic Member
+              Meet Our Member
             </h2>
             <div className="grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-4">
-              {["Vocal", "Guitar", "Bass", "Drums"].map((member) => (
-                <article key={member} className="bg-white/15">
-                  <div className="aspect-[4/3] bg-white/10" />
-                  <div className="border-t border-black bg-white/20 px-3 py-2">
-                    <p className="text-lg leading-none">Name</p>
+              {members.map((item) => (
+                <article
+                  key={item.name}
+                  className="flex min-h-[300px] flex-col border-2 border-white/30 bg-white/15 md:min-h-[360px] rounded-md p-2"
+                >
+                  <div className="min-h-0 flex-1 overflow-hidden p-4" />
+                  <img
+                    src={item.image}
+                    alt={`Foto ${item.name}`}
+                    className="h-full w-full object-cover rounded-sm"
+                  />
+                  <div className="mt-auto px-3 py-2">
+                    <p className="text-lg font-bold leading-none">
+                      {item.name}
+                    </p>
                     <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.14em] text-white/65">
-                      {member}
+                      {item.type}
                     </p>
                   </div>
                 </article>
@@ -171,21 +194,29 @@ function App() {
         </section>
         <section
           id="partnership"
-          className="min-h-[100svh] w-full bg-black px-[clamp(24px,7vw,104px)] py-24 text-white md:py-32"
+          className="flex min-h-[100svh] w-full items-center bg-black px-[clamp(24px,7vw,104px)] py-24 text-white md:py-32"
           aria-labelledby="partnership-title"
         >
-          <div className="mx-auto max-w-[1200px]">
+          <div className="mx-auto w-full max-w-[1200px]">
             <h2
-              className="mb-5 text-3xl font-normal tracking-tight md:text-4xl"
+              className="mb-5 text-3xl font-bold tracking-tight md:text-5xl"
               id="partnership-title"
             >
-              Partnership
+              Cakraphonic Partnership
             </h2>
-            <div className="grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-4">
+            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3 md:gap-5">
               {partnerships.map((item) => (
-                <article key={item.name} className="bg-white/15">
-                  <div className="aspect-[4/3] bg-white/10" />
-                  <div className="border-t border-black bg-white/20 px-3 py-2">
+                <article
+                  key={item.name}
+                  className="flex min-h-[300px] flex-col border-2 border-white/30 bg-white/15 md:min-h-[360px] rounded-md"
+                >
+                  <div className="min-h-0 flex-1 bg-white/10" />
+                  <img
+                    src={item.image}
+                    alt={`Foto ${item.name}`}
+                    className="h-full w-full object-cover rounded-sm"
+                  />
+                  <div className="mt-auto border-t border-black bg-white/20 px-3 py-2">
                     <p className="text-lg leading-none">{item.name}</p>
                     <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.14em] text-white/65">
                       {item.type}
