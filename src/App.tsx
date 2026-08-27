@@ -1,10 +1,12 @@
+import { useState } from "react";
 import { ShaderBackground } from "./components/ui/gem-smoke";
 import Navbar from "./components/ui/Navbar";
 import DriftWall, { type DriftWallItem } from "./components/ui/DriftWall";
 import SmoothScroll from "./components/ui/smooth-scroll";
 import logoWhite from "./assets/logo-white.png";
-import daps from "./assets/dapss.jpg";
+import daps from "./assets/dapps.jpg";
 import SGA from "./assets/SGA.png";
+import andrew from "./assets/andrew-guitarist.jpeg";
 
 const documentationItems: DriftWallItem[] = [
   { image: "https://picsum.photos/id/145/600/400", title: "Live session" },
@@ -31,15 +33,95 @@ const partnerships = [
 ];
 
 const members = [
-  { name: "Vanya", type: "Manager" },
   { name: "Dovi", type: "Head Cakraphonic" },
+  { name: "Vanya", type: "Manager" },
   { name: "Altap", type: "Backstage Manager" },
-  { name: "Andrew", type: "Guitarist" },
+  { name: "Andrew", type: "Guitarist", image: andrew },
   { name: "Farhan", type: "guitarist" },
   { name: "Kelvin", type: "Bassist" },
   { name: "Jauza", type: "Singer" },
   { name: "Dhafi", type: "Drummer", image: daps },
+  { name: "Zilan", type: "Bassist" },
+  { name: "Khay", type: "Singer" },
+  //{ name: "Dizza", type: "Singer" },
+  { name: "Aldhi", type: "Pianist" },
+  { name: "Panji", type: "Producer" },
 ];
+
+function MemberGrid() {
+  const [showTalent, setShowTalent] = useState(false);
+
+  const visibleMembers = showTalent
+    ? members.filter((item) =>
+        /guitar|drummer|bassist|singer|pianist/i.test(item.type),
+      )
+    : members.filter((item) =>
+        /manager|head cakraphonic|producer/i.test(item.type),
+      );
+
+  return (
+    <>
+      <div className="mb-5 flex items-center justify-between gap-4">
+        <div className="flex items-baseline gap-3">
+          <h2
+            id="members-title"
+            className="text-3xl font-bold tracking-tight md:text-5xl"
+          >
+            Meet Our Member
+          </h2>
+          <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-[#d6b56d] md:text-lg">
+            {showTalent ? "Talent" : "Management"}
+          </span>
+        </div>
+        <button
+          type="button"
+          aria-label={showTalent ? "Show management" : "Meet our talent"}
+          aria-pressed={showTalent}
+          className="flex shrink-0 items-center gap-2 text-sm uppercase tracking-[0.12em] text-white transition-colors hover:text-[#d6b56d]"
+          onClick={() => setShowTalent((current) => !current)}
+        >
+          <span className="hidden sm:inline">
+            {showTalent ? "Management" : "Meet Our Talent"}
+          </span>
+          <span aria-hidden="true" className="text-2xl leading-none">
+            {showTalent ? "←" : "→"}
+          </span>
+        </button>
+      </div>
+      <div
+        className={`member-grid grid pb-4 ${
+          showTalent ? "" : "member-grid--management"
+        }`}
+      >
+        {visibleMembers.map((item, index) => (
+          <article
+            key={`${item.name}-${index}`}
+            className="group flex min-h-[300px] snap-center flex-col overflow-hidden rounded-md border-2 border-white/30 bg-white/15 p-2 transition-all duration-300 hover:border-[#d6b56d] hover:bg-[#d6b56d]/15 hover:shadow-[0_0_24px_rgba(214,181,109,0.2)] md:min-h-[360px]"
+          >
+            <div className="min-h-0 flex-1 overflow-hidden p-4">
+              {item.image ? (
+                <img
+                  src={item.image}
+                  alt={`Foto ${item.name}`}
+                  draggable={false}
+                  className="h-full w-full rounded-sm object-cover grayscale transition-all duration-300 group-hover:grayscale-0"
+                />
+              ) : (
+                <div className="h-full w-full rounded-sm bg-white/10" />
+              )}
+            </div>
+            <div className="mt-auto px-3 py-2">
+              <p className="text-lg font-bold leading-none">{item.name}</p>
+              <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.14em] text-white/65">
+                {item.type}
+              </p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </>
+  );
+}
 
 function App() {
   return (
@@ -94,7 +176,7 @@ function App() {
             <div className="max-w-2xl font-sans text-sm leading-relaxed text-white/75 md:flex-1">
               <h2
                 id="about-title"
-                className="mb-5 text-5xl font-bold tracking-tight text-white md:text-4xl"
+                className="mb-5 text-4xl font-bold tracking-tight text-white md:text-5xl"
               >
                 kenal lebih dekat dengan
                 <br />
@@ -161,35 +243,7 @@ function App() {
           aria-labelledby="members-title"
         >
           <div className="mx-auto max-w-[1200px]">
-            <h2
-              id="members-title"
-              className="mb-5 text-3xl font-bold tracking-tight md:text-5xl"
-            >
-              Meet Our Member
-            </h2>
-            <div className="grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-4">
-              {members.map((item) => (
-                <article
-                  key={item.name}
-                  className="flex min-h-[300px] flex-col border-2 border-white/30 bg-white/15 md:min-h-[360px] rounded-md p-2"
-                >
-                  <div className="min-h-0 flex-1 overflow-hidden p-4" />
-                  <img
-                    src={item.image}
-                    alt={`Foto ${item.name}`}
-                    className="h-full w-full object-cover rounded-sm"
-                  />
-                  <div className="mt-auto px-3 py-2">
-                    <p className="text-lg font-bold leading-none">
-                      {item.name}
-                    </p>
-                    <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.14em] text-white/65">
-                      {item.type}
-                    </p>
-                  </div>
-                </article>
-              ))}
-            </div>
+            <MemberGrid />
           </div>
         </section>
         <section
