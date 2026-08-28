@@ -6,18 +6,118 @@ body {
 
 .member-grid {
   --member-gap: 0.75rem;
-  grid-auto-flow: column;
-  grid-auto-columns: calc((100% - (var(--member-gap) * 3)) / 4);
-  grid-template-rows: repeat(2, minmax(0, 1fr));
+  grid-auto-flow: row;
+  grid-template-columns: minmax(0, 1fr);
   gap: var(--member-gap);
 }
 
-.member-grid--management {
+.member-grid-scroll {
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(214, 181, 109, 0.65) transparent;
+}
+
+.member-grid-scroll::-webkit-scrollbar {
+  height: 0.35rem;
+}
+
+.member-grid-scroll::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: rgba(214, 181, 109, 0.65);
+}
+
+.member-grid-scroll .member-grid {
+  min-width: max-content;
+}
+
+.partnership-grid {
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(78vw, 78vw);
   grid-template-rows: minmax(0, 1fr);
+  min-width: max-content;
+}
+
+.member-grid--management {
+  grid-template-rows: none;
+}
+
+@keyframes member-grid-enter {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.member-grid--transition {
+  animation: member-grid-enter 420ms ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .member-grid--transition {
+    animation: none;
+  }
 }
 
 @media (min-width: 768px) {
   .member-grid {
     --member-gap: 1rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .member-grid-scroll {
+    overflow-x: visible;
+  }
+
+  .member-grid-scroll .member-grid {
+    min-width: 0;
+  }
+
+  .partnership-grid {
+    grid-auto-flow: row;
+    grid-auto-columns: auto;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    min-width: 0;
+  }
+}
+
+@media (min-width: 1024px) {
+  .member-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 767px) {
+  .member-grid {
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(65vw, 65vw);
+    grid-template-columns: none;
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+  }
+
+  .member-grid--management {
+    grid-template-rows: minmax(0, 1fr);
+  }
+
+  .partnership-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1280px) {
+  .member-grid {
+    grid-auto-flow: column;
+    grid-auto-columns: calc((100% - (var(--member-gap) * 3)) / 4);
+    grid-template-columns: none;
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+  }
+
+  .member-grid--management {
+    grid-template-rows: minmax(0, 1fr);
   }
 }
