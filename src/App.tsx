@@ -458,7 +458,7 @@ function App() {
                   Visit Us
                 </p>
                 <p className="max-w-sm text-sm leading-relaxed text-white/85 sm:text-base">
-                  Jl. Kemang Timur No.1, RT.14/RW.8, Pejaten Bar., Ps. Minggu,
+                  Jl. Kemang Timur No.1, RT.14/RW.8, Pejaten Baru., Ps. Minggu,
                   Jakarta Selatan, DKI Jakarta 12510
                 </p>
               </address>
