@@ -16,7 +16,7 @@ import aldi from "./assets/aldi.jpeg";
 import kelvin from "./assets/kelvin.jpeg";
 import altap from "./assets/altap.jpeg";
 import banu from "./assets/banu.jpeg";
-import khay from "./assets/khayy.jpeg";
+//import khay from "./assets/khayy.jpeg";
 import panji2 from "./assets/panji.jpeg";
 import dovi from "./assets/dovi.jpeg";
 
@@ -51,7 +51,7 @@ const members = [
   { name: "Jauza", type: "Singer", image: jeje },
   { name: "Dhafi", type: "Drummer", image: daps },
   //{ name: "Zilan", type: "Bassist" },
-  { name: "Khay", type: "Singer", image: khay },
+  //{ name: "Khay", type: "Singer", image: khay },
   { name: "Panji", type: "Singer", image: panji },
   //{ name: "Dizza", type: "Singer" },
   { name: "Aldhi", type: "Pianist", image: aldi },
